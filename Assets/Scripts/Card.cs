@@ -9,11 +9,11 @@ namespace productions
     public class Card : ScriptableObject
     {
         public string cardName;
-        public CardType cardtype;
+        public List<CardType> cardtype;
         public int health;
         public int damageMin;
         public int damageMax;
-        public DamageType damageType;
+        public List<DamageType> damageType;
 
         public enum CardType //tipos de cartas
         {
