@@ -897,7 +897,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 150, y: 150, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2414950685872258538}
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f13e8320d95f10c4f86ab430e5fceba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 0}
+  cardData: {fileID: 11400000, guid: 9007b65e1bfe99849b9042d31be002e0, type: 2}
   cardImage: {fileID: 4594044886545274370}
   nameText: {fileID: 1604236552560578898}
   healthText: {fileID: 6518509031866189960}
