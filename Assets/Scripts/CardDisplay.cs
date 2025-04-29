@@ -13,6 +13,7 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text healthText;
     public TMP_Text damageText;
     public Image[] typeImages;
+    public Image damageImage;
     private Color[] cardColors ={
         new Color (0.23f, 0.05f, 0.20f),//weapon
         Color.blue,//defense
@@ -22,11 +23,12 @@ public class CardDisplay : MonoBehaviour
     };
     private Color[] typeColors ={
         new Color (0.50f, 0.05f, 0.20f),//weapon
-        Color.blue,//defense
-        Color.green, //talk
-        Color.cyan, //item
+        Color.red,//defense
+        Color.blue, //talk
+        Color.green, //item
 
     };
+    
 
     void Start()
     {
@@ -37,6 +39,8 @@ public class CardDisplay : MonoBehaviour
     {
         //update the main card image color based on the first card type
         cardImage.color = cardColors[(int)cardData.cardtype[0]];
+
+        damageImage.color = typeColors[(int)cardData.damageType[0]];
 
         nameText.text = cardData.cardName;
         healthText.text = cardData.health.ToString();
