@@ -17,25 +17,25 @@ namespace productions
 
         public enum CardType //tipos de cartas
         {
-            Fire,
+            Weapon,
 
-            Earth,
+            Defense,
 
-            Water,
+            Talk,
 
-            Air,
+            Item,
 
         }
 
         public enum DamageType //tipos de daño
         {
-            Fire,
+            Weapon,
 
-            Earth,
+            Defense,
 
-            Water,
+            Talk,
 
-            Air,
+            Item,
 
         }
 
