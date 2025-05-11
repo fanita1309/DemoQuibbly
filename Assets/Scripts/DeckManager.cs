@@ -6,7 +6,11 @@ using productions;
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allCards = new List<Card>();
+    public int startingHandSize = 6;
     private int currentIndex = 0;
+    public int maxHandSize;
+    public int currentHandSize;
+    private HandManager handManager;
 
     void Start()
     {
@@ -15,10 +19,19 @@ public class DeckManager : MonoBehaviour
 
         allCards.AddRange(cards);
 
-        HandManager hand = FindObjectOfType<HandManager>();
-        for (int i  = 0; i < 6; i++) 
+        handManager= FindObjectOfType<HandManager>();
+        maxHandSize = handManager.maxHandSize;
+        for (int i  = 0; i < startingHandSize; i++) 
         {
-            DrawCard(hand);
+            DrawCard(handManager);
+        }
+    }
+
+    void Update()
+    {
+        if (handManager != null)
+        {
+            currentHandSize = handManager.cardsInHand.Count;
         }
     }
 
@@ -27,8 +40,12 @@ public class DeckManager : MonoBehaviour
         if (allCards.Count == 0)
             return;
 
-        Card nextCard = allCards[currentIndex];
-        handManager.AddCardToHand(nextCard);
-        currentIndex= (currentIndex+1)%allCards.Count;
+        if (currentHandSize < maxHandSize)
+        {
+            Card nextCard = allCards[currentIndex];
+            handManager.AddCardToHand(nextCard);
+            currentIndex = (currentIndex + 1) % allCards.Count;
+        }
+
     }
 }

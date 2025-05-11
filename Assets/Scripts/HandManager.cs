@@ -6,7 +6,6 @@ using System;
 
 public class HandManager : MonoBehaviour
 {
-    public DeckManager deckManager;
     public GameObject cardPrefab; //assign cardprefab in the inspector
     public Transform handTransform; //root hand position;
     public float fanSpread =-7.5f;
