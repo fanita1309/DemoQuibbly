@@ -29,6 +29,7 @@ public class HandManager : MonoBehaviour
             cardsInHand.Add(newCard);
 
             newCard.GetComponent<CardDisplay>().cardData = cardData;
+            newCard.GetComponent<CardDisplay>().UpdateCardDisplay();
         }
 
         UpdateHandVisuals();

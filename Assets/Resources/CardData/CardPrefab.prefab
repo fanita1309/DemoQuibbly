@@ -375,6 +375,8 @@ MonoBehaviour:
   spacing: 40
   arrowAngleAdjustment: 180
   dotsToSkip: 2
+  baseScreenWidth: 1920
+  spacingScale: 0
 --- !u!1 &2554256021373886309
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,6 +988,7 @@ MonoBehaviour:
   - {fileID: 5380426455736190889}
   - {fileID: 4985906466095831293}
   damageImage: {fileID: 4181190810859927085}
+  displayImage: {fileID: 1185953938975558503}
 --- !u!61 &2225841368976889485
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1271,7 +1274,7 @@ GameObject:
   - component: {fileID: 4955184531541321645}
   - component: {fileID: 1185953938975558503}
   m_Layer: 0
-  m_Name: Image
+  m_Name: DisplayImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

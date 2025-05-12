@@ -14,6 +14,8 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text damageText;
     public Image[] typeImages;
     public Image damageImage;
+    public Image displayImage;
+
     private Color[] cardColors ={
         new Color (0.23f, 0.05f, 0.20f),//weapon
         Color.blue,//defense
@@ -28,12 +30,6 @@ public class CardDisplay : MonoBehaviour
         Color.green, //item
 
     };
-    
-
-    void Start()
-    {
-        UpdateCardDisplay();
-    }
 
     public void UpdateCardDisplay()
     {
@@ -45,6 +41,7 @@ public class CardDisplay : MonoBehaviour
         nameText.text = cardData.cardName;
         healthText.text = cardData.health.ToString();
         damageText.text = $"{cardData.damageMin} - {cardData.damageMax}";
+        displayImage.sprite = cardData.cardSprite;
 
         //update type cards
         for (int i = 0; i < typeImages.Length; i++)

@@ -13,6 +13,7 @@ namespace productions
         public int health;
         public int damageMin;
         public int damageMax;
+        public Sprite cardSprite;
         public List<DamageType> damageType;
         public GameObject prefab;
         public int range;
