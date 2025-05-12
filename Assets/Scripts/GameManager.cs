@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public AudioManager AudioManager { get; private set; }
     public DeckManager DeckManager { get; private set; } 
 
+    public bool playingCard = false;
+
     private void Awake()
     {
         if (Instance == null)
