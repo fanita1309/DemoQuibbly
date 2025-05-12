@@ -24,6 +24,8 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private GameObject playArrow;
     [SerializeField] private float lerpFactor = 0.1f;
 
+    private LayerMask gridLayerMask;
+
 
     void Awake()
     {
@@ -33,6 +35,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         originalPosition= rectTransform.localPosition;
         originalRotation = rectTransform.localRotation;
         gridManager = FindObjectOfType<GridManager>();
+        gridLayerMask = LayerMask.GetMask("Grid");
     }
 
     void Update()
@@ -148,7 +151,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if (!Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
 
             if (hit.collider != null && hit.collider.GetComponent<GridCell>())
             {
