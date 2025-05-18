@@ -122,6 +122,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &12827214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1717321685869686128, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+  m_PrefabInstance: {fileID: 6219993766526803385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5d2b42f758a5540a1bfd53812a3164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &73473130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3849135824676806053, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+  m_PrefabInstance: {fileID: 6219993766526803385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2f7299e7807bd44939af8f29289598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &79603237
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,6 +776,53 @@ MonoBehaviour:
   maxHandSize: 0
   currentHandSize: 0
   drawPileCounter: {fileID: 623321692}
+--- !u!1 &1288950886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1288950887}
+  - component: {fileID: 1288950888}
+  m_Layer: 0
+  m_Name: DrawCardButtonHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1288950887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288950886}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.8255005, y: -38.413574, z: 4.4420376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 216239785}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288950888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288950886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cd9a7bd967bd04c9cfc95cc03124c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawPileManager: {fileID: 73473130}
+  handManager: {fileID: 12827214}
+  owner: 0
 --- !u!114 &1476918717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1497846812054136771, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
@@ -892,11 +961,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
       propertyPath: allCards.Array.size
-      value: 24
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
       propertyPath: enemyCards.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
       propertyPath: allCards.Array.data[0]
@@ -945,7 +1014,7 @@ PrefabInstance:
     - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
       propertyPath: allCards.Array.data[10]
       value: 
-      objectReference: {fileID: 11400000, guid: 3fa2475194b6b4f4a970b4e934060f45, type: 2}
+      objectReference: {fileID: 11400000, guid: a84bf6dcbb4c1f7418e2782d56fe3086, type: 2}
     - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
       propertyPath: allCards.Array.data[11]
       value: 
@@ -999,6 +1068,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3cee7c4183f4c724d996cca299fe64a0, type: 2}
     - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
+      propertyPath: allCards.Array.data[24]
+      value: 
+      objectReference: {fileID: 11400000, guid: 35a7190758abb714ba15ced70eebd4ad, type: 2}
+    - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
+      propertyPath: allCards.Array.data[25]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1cbbcf4a355f02946943ae377c45e586, type: 2}
+    - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
       propertyPath: enemyCards.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: ecd6799394e530c499693921d067786f, type: 2}
@@ -1014,6 +1091,14 @@ PrefabInstance:
       propertyPath: enemyCards.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: a1997daa93aa9c646a039844c5e07dee, type: 2}
+    - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
+      propertyPath: enemyCards.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 35a7190758abb714ba15ced70eebd4ad, type: 2}
+    - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
+      propertyPath: enemyCards.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1cbbcf4a355f02946943ae377c45e586, type: 2}
     - target: {fileID: 4395562617624425937, guid: 702d4409e8333bb4c9c888f2a8ed7017, type: 3}
       propertyPath: playerCards.Array.data[0]
       value: 
@@ -1304,6 +1389,26 @@ PrefabInstance:
       propertyPath: maxHandSize
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 3849135824676806053, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: drawPile.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849135824676806053, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: drawPile.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 443e563af09b59342a03e5307aa166f5, type: 2}
+    - target: {fileID: 3849135824676806053, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: drawPile.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 345447eaad17afa4d9504ee2393b07d7, type: 2}
+    - target: {fileID: 3849135824676806053, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: drawPile.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: df8d10ad94b49b9468252efd11689427, type: 2}
+    - target: {fileID: 3849135824676806053, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: drawPile.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: fe1f9612aabd49a4cbc1312a6985eab1, type: 2}
     - target: {fileID: 5928774383445704252, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1312,6 +1417,30 @@ PrefabInstance:
       propertyPath: discardCountPlayer
       value: 
       objectReference: {fileID: 1476918717}
+    - target: {fileID: 7821307227854574447, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821307227854574447, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1288950888}
+    - target: {fileID: 7821307227854574447, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDrawCardButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821307227854574447, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DrawCardButtonHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821307227854574447, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7821307227854574447, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1324,6 +1453,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2190217616874120625, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
       insertIndex: 8
       addedObject: {fileID: 1097098759}
+    - targetCorrespondingSourceObject: {fileID: 2190217616874120625, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1288950887}
     - targetCorrespondingSourceObject: {fileID: 2190217616874120625, guid: c5642613dafffa34cb072c0c66bee87e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 899561815}

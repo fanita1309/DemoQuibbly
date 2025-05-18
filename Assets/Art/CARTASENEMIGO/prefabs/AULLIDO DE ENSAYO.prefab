@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8511165105884434999
+--- !u!1 &3835214289760748670
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1318158108790874031}
-  - component: {fileID: 8294838887309505787}
-  - component: {fileID: -218041779559266943}
-  - component: {fileID: 7581815236569738828}
-  - component: {fileID: -2048961790136483035}
-  m_Layer: 7
-  m_Name: Brazalete
+  - component: {fileID: 4965388414890120372}
+  - component: {fileID: 6900097917726129933}
+  - component: {fileID: 1650252788203296560}
+  - component: {fileID: -7382710669204641522}
+  - component: {fileID: -3768082817561225121}
+  m_Layer: 0
+  m_Name: AULLIDO DE ENSAYO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1318158108790874031
+--- !u!4 &4965388414890120372
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8511165105884434999}
+  m_GameObject: {fileID: 3835214289760748670}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8294838887309505787
+--- !u!212 &6900097917726129933
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8511165105884434999}
+  m_GameObject: {fileID: 3835214289760748670}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,24 +76,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9df60ef586500064f85559cdf1b73837, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f51f8f214082624989599ff95d95055, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-218041779559266943
+--- !u!114 &1650252788203296560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8511165105884434999}
+  m_GameObject: {fileID: 3835214289760748670}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e89f2662a4db8f54da68baf804eed365, type: 3}
@@ -109,13 +109,13 @@ MonoBehaviour:
   range: 0
   attackPattern: 0
   priorityTarget: 0
---- !u!114 &7581815236569738828
+--- !u!114 &-7382710669204641522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8511165105884434999}
+  m_GameObject: {fileID: 3835214289760748670}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 669990403ba985d4eae5a54c86e27e5f, type: 3}
@@ -124,13 +124,13 @@ MonoBehaviour:
   tooltip: {fileID: 0}
   fadeTime: 0.1
   hideDelay: 0.15
---- !u!61 &-2048961790136483035
+--- !u!61 &-3768082817561225121
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8511165105884434999}
+  m_GameObject: {fileID: 3835214289760748670}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -160,12 +160,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
-    newSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 10, y: 10}
+    newSize: {x: 10, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 10, y: 10}
   m_EdgeRadius: 0

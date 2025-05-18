@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aee5e8f24a745c24783d776ab7bcfc8e, type: 3}
-  m_Name: Fye
+  m_Name: Guitarra Rota
   m_EditorClassIdentifier: 
-  cardName: Fye
-  cardType: 0500000000000000
-  cardSprite: {fileID: 21300000, guid: 6a75cce1cb33c7c4f820b57ea62d1812, type: 3}
-  description: It's Fye
+  cardName: Guitarra Rota
+  cardType: 03000000
+  cardSprite: {fileID: 21300000, guid: 064f4d782bf86bc4f98f61efa98809fb, type: 3}
+  description: It's Fini
   owner: 1
-  health: 4
-  damageMin: 7
+  health: 12
+  damageMin: 6
   damageMax: 9
-  damageType: 05000000
-  prefab: {fileID: 5484414768619708000, guid: 4e554d9a70618fa44a9a620749a696c4, type: 3}
-  range: 5
-  attackPattern: 2
-  priorityTarget: 1
+  damageType: 03000000
+  prefab: {fileID: 5501676072600966342, guid: 805fa6333b602a1418bc80c8b7dec188, type: 3}
+  range: 1
+  attackPattern: 4
+  priorityTarget: 0

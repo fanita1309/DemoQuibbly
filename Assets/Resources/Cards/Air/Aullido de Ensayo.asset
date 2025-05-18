@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aee5e8f24a745c24783d776ab7bcfc8e, type: 3}
-  m_Name: Flo
+  m_Name: Aullido de Ensayo
   m_EditorClassIdentifier: 
-  cardName: Brazalete
-  cardType: 02000000
-  cardSprite: {fileID: 21300000, guid: 9df60ef586500064f85559cdf1b73837, type: 3}
-  description: It's Flo
-  owner: 0
-  health: 12
-  damageMin: 6
-  damageMax: 10
-  damageType: 02000000
-  prefab: {fileID: 8511165105884434999, guid: ac1875c4296a74d4fb9b2b871542623d, type: 3}
-  range: 3
-  attackPattern: 5
+  cardName: Aullido de Ensayo
+  cardType: 05000000
+  cardSprite: {fileID: 21300000, guid: 1f51f8f214082624989599ff95d95055, type: 3}
+  description: It's Fye
+  owner: 1
+  health: 4
+  damageMin: 7
+  damageMax: 9
+  damageType: 05000000
+  prefab: {fileID: 3835214289760748670, guid: f38bb81df7efff844af2778b4452191e, type: 3}
+  range: 5
+  attackPattern: 2
   priorityTarget: 1

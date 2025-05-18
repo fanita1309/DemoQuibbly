@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aee5e8f24a745c24783d776ab7bcfc8e, type: 3}
-  m_Name: Shayde
+  m_Name: Furia Roquera
   m_EditorClassIdentifier: 
-  cardName: Shayde
-  cardType: 03000000
-  cardSprite: {fileID: 21300000, guid: 6a75cce1cb33c7c4f820b57ea62d1812, type: 3}
-  description: It's Shayde
+  cardName: Furia Roquera
+  cardType: 05000000
+  cardSprite: {fileID: 21300000, guid: c2ba08545eee7064e8e33dd633c531b6, type: 3}
+  description: It's Genos
   owner: 1
-  health: 4
-  damageMin: 15
-  damageMax: 22
-  damageType: 03000000
-  prefab: {fileID: 5484414768619708000, guid: 4e554d9a70618fa44a9a620749a696c4, type: 3}
-  range: 3
-  attackPattern: 4
-  priorityTarget: 0
+  health: 10
+  damageMin: 10
+  damageMax: 13
+  damageType: 05000000
+  prefab: {fileID: 3244868840380833764, guid: cbf4d4a2d8dc6bd4dbbcf38f2c1c1439, type: 3}
+  range: 6
+  attackPattern: 1
+  priorityTarget: 2

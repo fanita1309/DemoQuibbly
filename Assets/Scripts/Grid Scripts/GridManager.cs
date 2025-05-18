@@ -26,6 +26,7 @@ public class GridManager : MonoBehaviour
     {
         gridCells = new GameObject[width, height];
         Vector2 centerOffset = new Vector2(width / 2.0f - 0.5f, height / 2.0f - 0.5f);
+        int cellCounter = 1; // 🆕 Contador de celdas
 
         for (int x = 0; x < width; x++)
         {
@@ -38,9 +39,15 @@ public class GridManager : MonoBehaviour
                 gridCell.transform.SetParent(transform);
                 gridCell.transform.localPosition = spawnPosition;
 
+                // Nombrar cada celda con número y dueño
+                string ownerLabel = (owner == GridOwner.Player) ? "Player" : "Enemy";
+                gridCell.name = $"Celda {cellCounter} {ownerLabel}";
+                cellCounter++;
+
                 GridCell cellScript = gridCell.GetComponent<GridCell>();
                 cellScript.gridIndex = gridPosition;
                 cellScript.owner = (owner == GridOwner.Player) ? CellOwner.Player : CellOwner.Enemy;
+                cellScript.cellID = cellCounter;
 
                 gridCells[x, y] = gridCell;
             }

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private int playerHealth;
+    private int playerHealth = 100;
     private int playerXP;
     private int difficulty = 5;
     public MonoBehaviour cardBeingPlayed; // Puede ser Spell o Character
