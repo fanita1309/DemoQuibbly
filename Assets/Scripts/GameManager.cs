@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private int playerHealth;
     private int playerXP;
     private int difficulty = 5;
+    public MonoBehaviour cardBeingPlayed; // Puede ser Spell o Character
 
     public OptionsManager OptionsManager { get; private set; }
     public AudioManager AudioManager { get; private set; }

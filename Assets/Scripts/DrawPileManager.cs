@@ -7,8 +7,9 @@ using System;
 
 public class DrawPileManager : MonoBehaviour
 {
+    public DeckOwner owner;
     public List<Card> drawPile = new List<Card>();
-    
+
     public int startingHandSize = 6;
     private int currentIndex = 0;
     public int maxHandSize;
@@ -19,12 +20,15 @@ public class DrawPileManager : MonoBehaviour
 
     void Start()
     {
-        handManager = FindObjectOfType<HandManager>();
+        if (owner == DeckOwner.Player)
+        {
+            handManager = FindObjectOfType<HandManager>();
+        }
     }
 
     void Update()
     {
-        if (handManager != null)
+        if (owner == DeckOwner.Player && handManager != null)
         {
             currentHandSize = handManager.cardsInHand.Count;
         }
@@ -32,55 +36,78 @@ public class DrawPileManager : MonoBehaviour
 
     public void MakeDrawPile(List<Card> cardsToAdd)
     {
+        drawPile.Clear(); // Por si acaso
         drawPile.AddRange(cardsToAdd);
         Utility.Shuffle(drawPile);
         UpdateDrawPileCount();
     }
 
-    public void BattleSetup (int numberOfCardsToDraw, int setMaxHandSize)
+    public void BattleSetup(int numberOfCardsToDraw, int setMaxHandSize, HandManager handManager, CardOwner owner)
     {
         maxHandSize = setMaxHandSize;
         for (int i = 0; i < numberOfCardsToDraw; i++)
         {
-            DrawCard(handManager);
+            DrawCard(handManager, owner);
         }
     }
 
-    public void DrawCard(HandManager handManager)
+    public void DrawCard(HandManager handManager, CardOwner owner)
     {
+        currentHandSize = handManager.cardsInHand.Count;
+
         if (drawPile.Count == 0)
         {
-            RefillDeckFromDiscard();
+            RefillDeckFromDiscard(owner);
         }
+
+        if (drawPile.Count == 0) return; // Si sigue vacío, salir
 
         if (currentHandSize < maxHandSize)
         {
+            if (currentIndex >= drawPile.Count)
+            {
+                currentIndex = 0;
+            }
+
             Card nextCard = drawPile[currentIndex];
             handManager.AddCardToHand(nextCard);
             drawPile.RemoveAt(currentIndex);
             UpdateDrawPileCount();
-            currentIndex = (currentIndex + 1) % drawPile.Count;
-        }
 
+            if (drawPile.Count > 0)
+            {
+                currentIndex = currentIndex % drawPile.Count;
+            }
+            else
+            {
+                currentIndex = 0;
+            }
+        }
     }
 
-    private void RefillDeckFromDiscard()
+    public void RefillDeckFromDiscard(CardOwner owner)
     {
         if (discardManager == null)
         {
             discardManager = FindObjectOfType<DiscardManager>();
         }
 
-        if (discardManager != null && discardManager.discardCardsCount > 0)
+        if (discardManager != null)
         {
-            drawPile = discardManager.PullAllFromDiscard();
-            Utility.Shuffle(drawPile);
-            currentIndex = 0;
+            int discardCount = (owner == CardOwner.Player) ? discardManager.playerDiscardCount : discardManager.enemyDiscardCount;
+
+            if (discardCount > 0)
+            {
+                drawPile = discardManager.PullAllFromDiscard(owner);
+                Utility.Shuffle(drawPile);
+                currentIndex = 0;
+            }
         }
     }
 
     private void UpdateDrawPileCount()
     {
-        drawPileCounter.text = drawPile.Count.ToString();
+        if (drawPileCounter != null)
+            drawPileCounter.text = drawPile.Count.ToString();
     }
 }

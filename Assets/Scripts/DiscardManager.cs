@@ -8,37 +8,61 @@ using System;
 
 public class DiscardManager : MonoBehaviour
 {
-    [SerializeField] public List<Card> discardCards = new List<Card>();
-    public TextMeshProUGUI discardCount;
-    public int discardCardsCount;
+    [SerializeField] public List<Card> playerDiscardCards = new List<Card>();
+    [SerializeField] public List<Card> enemyDiscardCards = new List<Card>();
+
+    public TextMeshProUGUI discardCountPlayer;
+    public TextMeshProUGUI discardCountEnemy;
+
+    public int playerDiscardCount;
+    public int enemyDiscardCount;
 
     void Awake()
     {
-        UpdateDiscardCount();
+        UpdateDiscardCounts();
     }
 
-    private void UpdateDiscardCount()
+    private void UpdateDiscardCounts()
     {
-        discardCount.text = discardCards.Count.ToString();
-        discardCardsCount = discardCards.Count;
+        if (discardCountPlayer != null)
+            discardCountPlayer.text = playerDiscardCards.Count.ToString();
+        if (discardCountEnemy != null)
+            discardCountEnemy.text = enemyDiscardCards.Count.ToString();
+
+        playerDiscardCount = playerDiscardCards.Count;
+        enemyDiscardCount = enemyDiscardCards.Count;
     }
 
-    public void AddToDiscard (Card card)
+    public void AddToDiscard(Card card)
     {
         if (card != null)
         {
-            discardCards.Add(card);
-            UpdateDiscardCount();
+            if (card.owner == CardOwner.Player)
+            {
+                playerDiscardCards.Add(card);
+            }
+            else
+            {
+                enemyDiscardCards.Add(card);
+            }
+            UpdateDiscardCounts();
         }
     }
 
     public Card PullFromDiscard()
     {
-        if (discardCards.Count > 0)
+        return PullFromDiscard(CardOwner.Player);
+    }
+
+    public Card PullFromDiscard(CardOwner owner)
+    {
+        List<Card> pile = owner == CardOwner.Player ? playerDiscardCards : enemyDiscardCards;
+
+        if (pile.Count > 0)
         {
-            Card cardToReturn = discardCards[discardCards.Count - 1];
-            discardCards.RemoveAt(discardCards.Count - 1);
-            UpdateDiscardCount ();
+            Card cardToReturn = pile[pile.Count - 1];
+            pile.RemoveAt(pile.Count - 1);
+            UpdateDiscardCounts();
             return cardToReturn;
         }
         else
@@ -47,12 +71,16 @@ public class DiscardManager : MonoBehaviour
         }
     }
 
-    public bool PullSelectCardFromDiscard (Card card)
+    public bool PullSelectCardFromDiscard(Card card)
     {
-        if (discardCards.Count > 0 && discardCards.Contains(card))
+        if (card == null) return false;
+
+        List<Card> pile = card.owner == CardOwner.Player ? playerDiscardCards : enemyDiscardCards;
+
+        if (pile.Count > 0 && pile.Contains(card))
         {
-            discardCards.Remove(card);
-            UpdateDiscardCount();
+            pile.Remove(card);
+            UpdateDiscardCounts();
             return true;
         }
         else
@@ -61,18 +89,20 @@ public class DiscardManager : MonoBehaviour
         }
     }
 
-    public List <Card> PullAllFromDiscard ()
+    public List<Card> PullAllFromDiscard(CardOwner owner)
     {
-        if (discardCards.Count > 0)
+        List<Card> pile = owner == CardOwner.Player ? playerDiscardCards : enemyDiscardCards;
+
+        if (pile.Count > 0)
         {
-            List <Card> cardsToReturn = new List <Card>(discardCards);
-            discardCards.Clear();
-            UpdateDiscardCount();
+            List<Card> cardsToReturn = new List<Card>(pile);
+            pile.Clear();
+            UpdateDiscardCounts();
             return cardsToReturn;
         }
         else
         {
-            return new List<Card> ();
+            return new List<Card>();
         }
     }
 }

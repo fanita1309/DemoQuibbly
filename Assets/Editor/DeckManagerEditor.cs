@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using productions;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -17,7 +19,7 @@ public class DeckManagerEditor : Editor
             HandManager handManager = FindObjectOfType<HandManager>();
             if (handManager != null)
             {
-                drawPileManager.DrawCard(handManager);
+                drawPileManager.DrawCard(handManager, CardOwner.Player); // <-- Aquí agregas el CardOwner
             }
         }
     }

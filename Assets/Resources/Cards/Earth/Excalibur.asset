@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee5e8f24a745c24783d776ab7bcfc8e, type: 3}
+  m_Name: Excalibur
+  m_EditorClassIdentifier: 
+  cardName: Espada Excalibur
+  cardType: 01000000
+  cardSprite: {fileID: 21300000, guid: 9b33ac3f2bcec7442a4e5fddd1da9dea, type: 3}
+  description: La legendaria Excalibur
+  owner: 0
+  health: 25
+  damageMin: 3
+  damageMax: 3
+  damageType: 01000000
+  prefab: {fileID: 1485697760080975145, guid: 88cc71fc64ea2bb479482cc153ec50d4, type: 3}
+  range: 1
+  attackPattern: 5
+  priorityTarget: 2

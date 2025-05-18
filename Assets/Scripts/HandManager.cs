@@ -13,6 +13,7 @@ public class HandManager : MonoBehaviour
     public float verticalSpacing = 100f;
     public int maxHandSize;
     public List<GameObject> cardsInHand = new List<GameObject>();
+    public DeckOwner owner;
 
 
     void Start()
@@ -22,14 +23,27 @@ public class HandManager : MonoBehaviour
 
     public void AddCardToHand(Card cardData)
     {
-        if (cardsInHand.Count < maxHandSize)
-        {
-            //instantiate the card
-            GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
-            cardsInHand.Add(newCard);
+        if (cardsInHand.Count >= maxHandSize)
+            return;
 
-            newCard.GetComponent<CardDisplay>().cardData = cardData;
-            newCard.GetComponent<CardDisplay>().UpdateCardDisplay();
+        if (cardPrefab == null)
+        {
+            Debug.LogWarning("Card prefab no asignado en HandManager.");
+            return;
+        }
+
+        GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
+        cardsInHand.Add(newCard);
+
+        CardDisplay display = newCard.GetComponent<CardDisplay>();
+        if (display != null)
+        {
+            display.cardData = cardData;
+            display.UpdateCardDisplay();
+        }
+        else
+        {
+            Debug.LogWarning("El prefab de carta no tiene componente CardDisplay.");
         }
 
         UpdateHandVisuals();

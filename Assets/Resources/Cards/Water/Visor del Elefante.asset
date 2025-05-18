@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a78af3d62d9c6f498ee24e75e63c3ba, type: 3}
+  m_Name: Visor del Elefante
+  m_EditorClassIdentifier: 
+  cardName: Visor del Elefante
+  cardType: 02000000
+  cardSprite: {fileID: 21300000, guid: c8c395aa50e66444e88d0884d618ff1b, type: 3}
+  description: Cambia el elemento de la carta.
+  owner: 0
+  spellType: 0
+  attributeTarget: 05000000
+  attributeChangeAmount: 
+  attackPatternToChangeTo: 0
+  damageTypeToChangeTo: 0
+  cardElementTypeToChangeTo: 5
+  priorityTargetToChangeTo: 2

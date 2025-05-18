@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using productions;
+using UnityEditor.U2D.Animation;
 
 public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -15,7 +17,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private Quaternion originalRotation;
     private Vector3 originalPosition;
     private GridManager gridManager;
-    private readonly int maxColumn=2;
+    private readonly int maxColumn=5;
 
     [SerializeField] private float selectScale = 1.2f;
     [SerializeField] private Vector2 cardPlay;
@@ -25,21 +27,38 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private float lerpFactor = 0.1f;
 
     private LayerMask gridLayerMask;
-
+    private LayerMask characterLayerMask;
+    private Card cardData;
+    private CardDisplay cardDisplay;
+    HandManager handManager;
+    DiscardManager discardManager;
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         originalScale = rectTransform.localScale;
-        originalPosition= rectTransform.localPosition;
+        originalPosition = rectTransform.localPosition;
         originalRotation = rectTransform.localRotation;
-        gridManager = FindObjectOfType<GridManager>();
+
+       // gridManager = FindObjectOfType<GridManager>();
+        handManager = FindObjectOfType<HandManager>();
+        discardManager = FindObjectOfType<DiscardManager>();
+        cardDisplay = GetComponent<CardDisplay>();
+
         gridLayerMask = LayerMask.GetMask("Grid");
+        characterLayerMask = LayerMask.GetMask("Characters");
+        cardData = cardDisplay.cardData;
+
     }
 
     void Update()
     { 
+        if (cardData != cardDisplay.cardData)
+        {
+            cardData = cardDisplay.cardData;
+        }
+
         switch (currentState) 
         {
             case 1:
@@ -151,27 +170,19 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if (!Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
 
-            if (hit.collider != null && hit.collider.GetComponent<GridCell>())
+            //specific card changes
+            if (cardData is Character characterCard)
             {
-                GridCell cell = hit.collider.GetComponent<GridCell>();
-                Vector2 targetPos = cell.gridIndex;
-
-                if (cell.gridIndex.x < maxColumn && gridManager.AddObjectToGrid(GetComponent<CardDisplay>().cardData.prefab, targetPos))
-                {
-                    HandManager handManager = FindAnyObjectByType<HandManager>();
-                    DiscardManager discardManager = FindAnyObjectByType<DiscardManager>();
-                    discardManager.AddToDiscard(GetComponent<CardDisplay>().cardData);
-                    handManager.cardsInHand.Remove(gameObject);
-                    handManager.UpdateHandVisuals();
-                    Debug.Log("Placed Character");
-                    Destroy(gameObject);
-                }
+                TryToPlayCharacterCard(ray, characterCard);
             }
+            else if (cardData is Spell spellCard)
+            {
+                TryToPlaySpellCard(ray, spellCard);
+            }
+
             TransitionToState0();
         }
-
 
         if (Input.mousePosition.y < cardPlay.y)
         {
@@ -179,5 +190,52 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             playArrow.SetActive(false);
         }
     }
+
+    private void TryToPlayCharacterCard(Ray ray, Character characterCard)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
+
+        if (hit.collider != null && hit.collider.TryGetComponent<GridCell>(out var cell))
+        {
+            Vector2 targetPos = cell.gridIndex;
+            GridManager gridManagerOfCell = cell.GetComponentInParent<GridManager>();
+
+            if (gridManagerOfCell != null && cell.gridIndex.x < maxColumn && gridManagerOfCell.AddObjectToGrid(characterCard.prefab, targetPos))
+            {
+                cell.objectInCell.GetComponent<CharacterStats>().characterStartData = characterCard;
+                discardManager.AddToDiscard(cardData);
+                handManager.cardsInHand.Remove(gameObject);
+                handManager.UpdateHandVisuals();
+                Debug.Log($"Placed Character {characterCard.prefab}");
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void TryToPlaySpellCard(Ray ray, Spell spellCard)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
+
+        if (hit.collider != null && hit.collider.TryGetComponent<GridCell>(out GridCell cell))
+        {
+            GridManager gridManagerOfCell = cell.GetComponentInParent<GridManager>();
+            GameObject objInCell = cell.objectInCell;
+
+            if (objInCell != null && objInCell.TryGetComponent<CharacterStats>(out var targetStats))
+            {
+                SpellEffectApplier.ApplySpell(spellCard, targetStats);
+                discardManager.AddToDiscard(cardData);
+                handManager.cardsInHand.Remove(gameObject);
+                handManager.UpdateHandVisuals();
+                Debug.Log($"Placed spell {spellCard.name} on {objInCell.name}");
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.LogWarning("No character found in cell to apply the spell.");
+            }
+        }
+    }
 }
+
     

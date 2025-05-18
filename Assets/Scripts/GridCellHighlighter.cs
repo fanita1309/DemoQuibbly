@@ -33,7 +33,7 @@ public class GridCellHighlighter : MonoBehaviour
         {
             spriteRenderer.color = highlightColor;
         }
-        else if (gridCell.cellFull || gridCell.gridIndex.x > 1)
+        else if (gridCell.cellFull || gridCell.owner != CellOwner.Player)
         {
             spriteRenderer.color = negColor;
         }
